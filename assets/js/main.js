@@ -38,13 +38,14 @@ let ovas = document.getElementById('ovas')
 
 //evento 
 btnSubmit.addEventListener('click', function(e){
+    
     e.preventDefault();
 
     //Url de consulta + id ingresado por usuario
     //let url = `https://consulta/anime/${idAnime.value}`;
 
     //Esta variable, guardara los datos de los inputs, como un obj
-    let dataObj = getDataFromDOM();
+   let objData = getDataFromDOM();
 
 
     //getDataAndPost(url);
@@ -58,13 +59,23 @@ function getDataFromDOM(){
 
 
     //textAreas
+    let listOvas = getDataFromTextarea(ovas)
 
-    ovas = getDataFromTextarea(ovas)
+
+
+
+
+
+
     //Array de los links del textArea Ovas
-    console.log(ovas)
+    console.log(listOvas)
 
    //objeto a retornar 
+    let obj ={
+        ovas: listOvas
+    }
 
+    return obj
 }
 
 /**
