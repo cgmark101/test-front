@@ -1,0 +1,67 @@
+{
+    "Titulo": "Wild Arms: Twilight Venom",
+    "Titulo ingles": "Wild Arms",
+    "Titulo japones": "ワイルドアームズ トワイライトヴェノム",
+    "Tipo": "TV",
+    "Episodios": 22,
+    "Sinopsis": "Este anime está basado en un juego de playstation con el mismo título. La historia trata sobre cuatro personas que viajan por la desolada tierra de Filgaea y se inventan una historia legendaria mientras lo hacen. Estos aventureros son Sheyenne Rainstorm, un pistolero que sostiene el arma legendaria llamada ARM; Kiel Aromax, un científico que parece que debería llevar una espada; Roleta Oratorio the Crest Hechicera, una usuaria de magia que usa cartas llamadas Crestas para lanzar hechizos; y Mirabelle Graceland, una de los Noble Red, que son una familia de criaturas vampíricas que viven junto a los seres humanos. También viajan con lindas pequeñas cosas peludas inteligentes, de la tribu Popepi Pipepo, llamadas Isaac y Jerusha. (Fuente: AniDB)",
+    "Estado": "Emisión terminada",
+    "Puntaje": 6.65,
+    "Genero": [
+    {
+    "mal_id": 1,
+    "type": "anime",
+    "name": "Action",
+    "url": "https://myanimelist.net/anime/genre/1/Action"
+    },
+    {
+    "mal_id": 24,
+    "type": "anime",
+    "name": "Sci-Fi",
+    "url": "https://myanimelist.net/anime/genre/24/Sci-Fi"
+    },
+    {
+    "mal_id": 2,
+    "type": "anime",
+    "name": "Adventure",
+    "url": "https://myanimelist.net/anime/genre/2/Adventure"
+    },
+    {
+    "mal_id": 16,
+    "type": "anime",
+    "name": "Magic",
+    "url": "https://myanimelist.net/anime/genre/16/Magic"
+    },
+    {
+    "mal_id": 32,
+    "type": "anime",
+    "name": "Vampire",
+    "url": "https://myanimelist.net/anime/genre/32/Vampire"
+    },
+    {
+    "mal_id": 10,
+    "type": "anime",
+    "name": "Fantasy",
+    "url": "https://myanimelist.net/anime/genre/10/Fantasy"
+    }
+    ],
+    "Trasmision": {
+    "from": "1999-10-18T00:00:00+00:00",
+    "to": "2000-03-27T00:00:00+00:00",
+    "prop": {
+    "from": {
+    "day": 18,
+    "month": 10,
+    "year": 1999
+    },
+    "to": {
+    "day": 27,
+    "month": 3,
+    "year": 2000
+    }
+    },
+    "string": "Oct 18, 1999 to Mar 27, 2000"
+    },
+    "Poster": "https://cdn.myanimelist.net/images/anime/1532/94186.jpg",
+    "Clasificacion": "PG-13 - Adolescentes de 13 años o más"
+    }

@@ -1,40 +1,25 @@
-/*axios.get('')
-    .then(function (response) {
-        // handle success
-        console.log(response);
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });
-
-
-axios.post('', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-})
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-*/
-
-
 
 //Boton disparador de evento
 const btnSubmit = document.getElementById('form-btn')
 
 //Elementos inputs, dom
-let idAnime   = document.getElementById('id-anime')
-let nCapitulos = document.getElementById('n-capitulos')
-let fecha = document.getElementById('fecha')
+let idAnime     = document.getElementById('id-anime')
+let nCapitulos  = document.getElementById('n-capitulos')
+let fecha       = document.getElementById('fecha')
+let video       = document.getElementById('video')
+let audio       = document.getElementById('audio')
+let subtitulos  = document.getElementById('subtitulos')
+let calificacion = document.getElementById('calificacion')
+let categEdad   = document.getElementById('categoria-edad')
+//let genero      = document.getElementById('genero')
 
-let ovas = document.getElementById('ovas')
+// textareas
+let fansub      = document.getElementById('fansub')
+let capitulos   = document.getElementById('capitulos')
+let especiales  = document.getElementById('especiales')
+let ovas        = document.getElementById('ovas')
+let extras      = document.getElementById('extras')
+let promos      = document.getElementById('promos')
 
 //evento 
 btnSubmit.addEventListener('click', function(e){
@@ -42,40 +27,44 @@ btnSubmit.addEventListener('click', function(e){
     e.preventDefault();
 
     //Url de consulta + id ingresado por usuario
-    //let url = `https://consulta/anime/${idAnime.value}`;
+    let url = `https://5v8hpm.deta.dev/anime/${idAnime.value}`;
 
     //Esta variable, guardara los datos de los inputs, como un obj
-   let objData = getDataFromDOM();
+    let objData = getDataFromDOM();
 
-
-    //getDataAndPost(url);
+    getDataAndPost(url, objData);
 
 })
 
 function getDataFromDOM(){
-    //Inputs normales
-    idAnime = idAnime.value; 
 
-
-
-    //textAreas
-    let listOvas = getDataFromTextarea(ovas)
-
-
-
-
-
-
-
-    //Array de los links del textArea Ovas
-    console.log(listOvas)
-
-   //objeto a retornar 
-    let obj ={
-        ovas: listOvas
+    let objetcList={
+        fansub:     getDataFromTextarea(fansub),
+        capitulos:  getDataFromTextarea(capitulos),
+        especiales: getDataFromTextarea(especiales),
+        ovas:       getDataFromTextarea(ovas),
+        extras:     getDataFromTextarea(extras),
+        promos:     getDataFromTextarea(promos)
     }
 
-    return obj
+    let dataForm= {
+        form: {
+            id: idAnime.value,
+            numeroCapitulos: nCapitulos.value,
+            fecha: fecha.value,
+            video: video.value,
+            audio: audio.value,
+            subtitulo: subtitulos.value,
+            calificacion: calificacion.value,
+            categoriaEdad: categEdad.value,
+            //genero: genero.value, 
+            enlaces: objetcList,
+        },    
+        data : ""
+    }
+
+
+    return dataForm
 }
 
 /**
@@ -94,8 +83,29 @@ function getDataFromTextarea(textArea){
 } 
 
 
-// get and post
-const getDataAndPost = async (url)=>{
-    let dataFromApi = await axios.get(url)
+const getDataAndPost = async (url, objData)=>{
+    
+    try {
 
+        //get
+        let dataFromApi = await axios.get(url= "http://127.0.0.1:5500/testData.json");
+        objData.data = dataFromApi
+        console.log(objData)
+        
+
+        //post
+
+        const headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            }
+        const urlpost =  ''
+        
+        let resPost = await axios.post(urlPost, objData, headers);
+
+    } catch (error) {
+        console.log(error)
+    }
+        
 }
+
