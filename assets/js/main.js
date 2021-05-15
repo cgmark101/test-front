@@ -32,6 +32,7 @@ btnSubmit.addEventListener('click', function(e){
     //Esta variable, guardara los datos de los inputs, como un obj
     let objData = getDataFromDOM();
 
+    // se pasan los datos ala funcion para añadirle los datos del de request para despues hacer el post
     getDataAndPost(url, objData);
 
 })
@@ -87,8 +88,10 @@ const getDataAndPost = async (url, objData)=>{
     
     try {
 
-        //get
+        //get consulta a api
         let dataFromApi = await axios.get(url= "http://127.0.0.1:5500/testData.json");
+        // se añade el resultado de la consulta al objeto original, de los inputs del dom
+        //Datos a enviar
         objData.data = dataFromApi
         console.log(objData)
         
