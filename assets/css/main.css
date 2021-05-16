@@ -5,6 +5,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color:rgb(223, 223, 223);
     min-height: 100vh;
 
@@ -39,7 +40,7 @@ label{
 
 .form__btn{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .enlaces{
@@ -65,4 +66,31 @@ label{
     top: 50%;
 
     transform: translateY(-10%);
+}
+
+.container__text{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+.cargando{
+    position: absolute;
+
+    color:blue;
+}
+
+.enviado{
+    position: absolute;
+
+    color: greenyellow;
+}
+
+.error{
+    position: absolute;
+
+    color: red;
 }
