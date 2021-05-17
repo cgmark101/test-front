@@ -26,7 +26,7 @@ btnSubmit.addEventListener('click', function(e){
         return
     }
     //Url de consulta + id ingresado por usuario
-    let url = `https://ae40wf.deta.dev/gx/mal/anime/${idAnime.value}`;
+    let url = `https://ae40wf.deta.dev/gx/search/anime/${idAnime.value}`;
 
     //Esta variable, guardara los datos de los inputs, como un obj
     let objData = getDataFromDOM();
