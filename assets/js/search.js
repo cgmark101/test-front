@@ -21,7 +21,7 @@ container.addEventListener('click', function (e) {
 
     let postMaliD = e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent;
     console.log(postMaliD)
-    url_post = `https://ae40wf.deta.dev/gx/db/insert1/${postMaliD}`
+    url_post = `https://ae40wf.deta.dev/gx/db/insert1?animeId=${postMaliD}`
     postAnimeById(postMaliD, url_post)
 })
 
