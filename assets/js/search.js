@@ -24,7 +24,6 @@ const responseAnimationLoad= {
 
 container.addEventListener('click', function (e) {
     e.preventDefault()
-    waitingResponseAnimation(responseAnimationLoad)
     let postMaliD = e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent;
     url_post = `https://ae40wf.deta.dev/gx/db/insert1?animeId=${postMaliD}`
 
@@ -34,6 +33,7 @@ container.addEventListener('click', function (e) {
 
 async function postAnimeById(id, url){
     try {
+        waitingResponseAnimation(responseAnimationLoad)
         let res_post = await axios.post(url)
         if(res_post.status == 200){
             waitingResponseAnimation()
