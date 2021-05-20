@@ -6,8 +6,6 @@ const message = document.getElementById('message')
 
 //Elementos inputs, dom
 let idAnime     = document.getElementById('id-anime')
-let titulo_en   = document.getElementById('titulo_en')
-let cantidad_ep = document.getElementById('cantidad_ep')
 
 //let genero      = document.getElementById('genero')
 
@@ -40,8 +38,6 @@ function getDataFromDOM(){
 
     let objetcList={
         id: parseInt(idAnime.value),
-        titulo_en: titulo_en.value,
-        cantidad_ep: parseInt(cantidad_ep.value),
         episodios:  {url: getDataFromTextarea(capitulos)},
         especiales: {url: getDataFromTextarea(especiales)},
         ovas:       {url: getDataFromTextarea(ovas)},
@@ -77,7 +73,7 @@ const getDataAndPost = async (url, objData)=>{
         console.log("CONSULTANDO")
         showLoadingAlert()
         let dataFromApi = await axios.get(url);
-
+        console.log(dataFromApi.data)
 
 
         /*verifica si viene un error en la consulta a la api, 
@@ -97,9 +93,6 @@ const getDataAndPost = async (url, objData)=>{
         
         //obtiene todos los datos que se necesitan enviars
         let dataPost = await getDataPost(objData, dataFromApi)
-
-        console.log(dataPost.data)
-
         /*************************************************
          * HEADER Y URL PARA EL POST
         **************************************************/
@@ -107,7 +100,7 @@ const getDataAndPost = async (url, objData)=>{
         const headers = {"Accept": "application/json","Content-Type": "application/json",}
         const urlPost =  URL_POST
         console.log("ENVIANDO: POST")
-        let resPost = await axios.post(urlPost, dataPost.data);
+        //let resPost = await axios.post(urlPost, dataPost.data);
         console.log("POST: OK")
 
         showSuccessAlert()
@@ -127,14 +120,21 @@ const getDataAndPost = async (url, objData)=>{
 function getDataPost(objData, dataFromApi){
     let newObjtoPost = {data:dataFromApi.data}
 
+    let titulo = dataFromApi.data.titulo;
+
+    
     //Mejorar esto
+    newObjtoPost.data.cantidad_ep = newObjtoPost.data.episodios
+    newObjtoPost.data.titulo_en = titulo;
+
+
     newObjtoPost.data.id = objData.id;
-    newObjtoPost.data.titulo_en = objData.titulo_en;
-    newObjtoPost.data.cantidad_ep = objData.cantidad_ep;
     newObjtoPost.data.episodios = objData.episodios;
     newObjtoPost.data.especiales = objData.especiales;
     newObjtoPost.data.ovas = objData.ovas;
     newObjtoPost.data.promo = objData.promo;
+
+    delete newObjtoPost.data.titulo
 
     return newObjtoPost
 }
@@ -143,7 +143,6 @@ function getDataPost(objData, dataFromApi){
 function showLoadingAlert(){
     message.classList.add("alert-primary")
     message.textContent = "Loading"
-    console.log(message.classList)
     
 }
 
@@ -184,7 +183,7 @@ function showSuccessAlert(){
 
 
 function isImcomplteForm(){
-    if(idAnime.value == "" || titulo_en.value == "" || cantidad_ep.value == "" ){
+    if(idAnime.value == ""){
         showErrorAlert()
         return true
     }
