@@ -7,11 +7,12 @@ let container = document.getElementById('container')
 btn_form.addEventListener('click', function (event) {
     event.preventDefault()
     if (input_search.value.length > 3) {
-        console.log(input_search.value)
+
+
         container.innerHTML= ""
         url_get = `https://ae40wf.deta.dev/gx/search/myanimelist/title?type=anime&title=${input_search.value}`
         getData(url_get, input_search)
-        console.log (url_get)
+
     }
 })
 
@@ -20,29 +21,46 @@ container.addEventListener('click', function (e) {
     e.preventDefault()
 
     let postMaliD = e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent;
-    console.log(postMaliD)
     url_post = `https://ae40wf.deta.dev/gx/db/insert1?animeId=${postMaliD}`
     postAnimeById(postMaliD, url_post)
 })
 
 async function postAnimeById(id, url){
     try {
-        console.log(url)
         let res_post = await axios.post(url)
-        console.log(res_post)
+        //console.log(res_post)
     } catch (error) {
-        console.log(error)
+        if(error.response.status == 409){
+            showAlertDuplicate()
+        }
+        
     }
+
+}
+function showLoading(){
+
+
+    container.innerHTML = `
+    <div class="load__container">
+        <img src="/assets/img/Mag.svg" alt="" srcset="">
+
+    </div>
+
+    `
 
 }
 
 
+function showAlertDuplicate(){
+
+}
+
 
 let string_html = ""
 async function getData(url, text) {
-
+    showLoading()
     let response = await axios.get(url)
-    console.log(response)
+
     addDataDom(response)
     showData()
 }
@@ -50,7 +68,7 @@ async function getData(url, text) {
 
 function addDataDom(response) {
     container.innerHTML = ""
-    console.log(container.innerHTML)
+
 
     for (let i in response.data.results) {
         string_html += `
@@ -67,11 +85,6 @@ function addDataDom(response) {
 
     container.innerHTML = string_html
     string_html = ""
-    setTimeout(() =>{
-        //container.innerHTML = "";
-        console.log(string_html)
-    }, 3000 )
-
 }
 
 function showData() {
