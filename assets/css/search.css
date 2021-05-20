@@ -85,6 +85,7 @@ p{
 
 .activate_modal{
     display: flex;
+    position: fixed;
     justify-content: center;
     align-items: center;
 }
