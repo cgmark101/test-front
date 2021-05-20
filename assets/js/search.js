@@ -3,6 +3,7 @@ let url_post = ""
 const input_search = document.getElementById('search')
 const btn_form = document.getElementById('btn-form')
 let container = document.getElementById('container')
+const mi_modal = document.getElementById('mi_modal')
 
 btn_form.addEventListener('click', function (event) {
     event.preventDefault()
@@ -16,27 +17,48 @@ btn_form.addEventListener('click', function (event) {
     }
 })
 
+const responseAnimationLoad= {
+    img: "assets/img/Infinity.svg"
+}
+
 
 container.addEventListener('click', function (e) {
     e.preventDefault()
-
+    waitingResponseAnimation(responseAnimationLoad)
     let postMaliD = e.target.parentNode.parentNode.childNodes[1].childNodes[3].textContent;
     url_post = `https://ae40wf.deta.dev/gx/db/insert1?animeId=${postMaliD}`
+
     postAnimeById(postMaliD, url_post)
 })
+
 
 async function postAnimeById(id, url){
     try {
         let res_post = await axios.post(url)
-        //console.log(res_post)
+        if(res_post.status == 200){
+            waitingResponseAnimation()
+
+        }
     } catch (error) {
         if(error.response.status == 409){
-            showAlertDuplicate()
+            waitingResponseAnimation()
+            
         }
         
     }
 
 }
+
+function waitingResponseAnimation(data){
+    mi_modal.classList.toggle('activate_modal')
+    mi_modal.innerHTML = `
+    <div class="mi_modal__cont">
+        <img class="mi_modal__img" src="${data.img}" alt="" srcset="">
+    </div>
+    `
+    
+}
+
 function showLoading(){
 
 

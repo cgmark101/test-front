@@ -64,3 +64,27 @@ p{
     cursor: pointer;
     overflow: hidden;
 }
+
+.mi_modal{
+    display:none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(66, 43, 121, 0.507);
+    z-index: 20;
+}
+
+.mi_modal_cont{
+    width: 200px;
+    height: 200px;
+}
+
+.mi_modal__img{
+    max-width: 100%;
+}
+
+.activate_modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
